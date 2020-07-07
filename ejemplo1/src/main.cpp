@@ -10,7 +10,7 @@ class conexionWeb{
     conexionWeb(const char *_SSID, const char* _PASSWORD ){
       WiFi.begin(_SSID, _PASSWORD);
       while(WiFi.status()!= WL_CONNECTED){
-          delay(500);
+          delay(800);
           Serial.print("...");
       }
     }
@@ -54,8 +54,8 @@ DateTime *reloj;
 StaticJsonDocument<512> horaActual;
 
 
-const char *ssid="Ubee16F8-2.4G";
-const char *passwrd="5F99F616F8";
+const char *ssid="INFINITUM7090";
+const char *passwrd="VHNHPaeEkG";
 
 
 void setup() {
@@ -64,13 +64,13 @@ void setup() {
   reloj=new DateTime();
   
 }
-int suma=0;
+int sumador=0;
 void loop() {
-  suma++;
+  sumador++;
   horaActual.clear();
   reloj->getTime();
   horaActual["hora"]=reloj->timeStringBuff;
-  horaActual["Sumatoria"]=suma;
+  horaActual["Sumatoria"]=sumador;
   serializeJson(horaActual,Serial);
   Serial.println("");
   delay(1000);
